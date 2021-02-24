@@ -49,7 +49,7 @@ function getYears(arr, getFinalsCB) {
     });
     return newArray
 }
-console.log(getYears(fifaData, getFinals))
+//console.log(getYears(fifaData, getFinals))
 
 
 
@@ -75,7 +75,7 @@ function getWinners(data, getFinalsCB) {
     return getFinalsCB(data).map(item => item["Home Team Goals"] > item["Away Team Goals"] ? item['Home Team Name'] : item["Away Team Name"])
 }
 
-console.log(getWinners(fifaData, getFinals))
+//console.log(getWinners(fifaData, getFinals))
 
 
 
@@ -89,8 +89,24 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(array, getYearsCB, getWinnersCB) {
-    const winnerYear
+function getWinnersByYear(data, getYearsCB, getWinnersCB) {
+    const winningYear = getYearsCB(data).map(function(item){
+        //console.log( 'item ',item)
+        return item;
+    })
+    const winningTeam = getWinnersCB(data).map(function(item){
+        //console.log('team', item);
+        return item;
+    })
+    //console.log(winningYear[0]);
+    //console.log(winningTeam[0]);
+    let newArray =[];
+    for(let i = 0; i < winningYear.length; i++){
+        newArray.push(`In ${winningYear[i]}, ${winningTeam[i]} won the world cup!`);
+    }
+    console.log(newArray);
+    return newArray;
+    
 }
 
 
@@ -105,8 +121,10 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(getFinalsCB) {
-   /* code here */
+function getAverageGoals(arr, getFinalsCB) {
+   const avGoal = getFinalsCB(arr).reduce(function(item){
+       let home = item['Home Team Goals']
+   })
 }
 
 
